@@ -1,30 +1,32 @@
-object Wash {
+fun main() {
+    // Character occurrence in a sentence analysis
+    // The string that we want to analyze
+    var s = "A programmer gets stuck in the shower because the instructions on the shampoo were: Lather, Wash, and Repeat."
+    println("Original sentence: $s")
 
-}
+    // Convert the string to lowercase
+    s = s.lowercase()
 
-fun main(args: Array<String>) {
-// Character occurrence in a sentence analysis
-// the string that we want to analyze
-    var s = "A programmer gets stuck in the shower because the instructions on the shampoo were: Lather,
-    Wash, and Repeat."
-    println(s)
-    s = s.toLowerCase()
-// counters initialization
+    // Counters initialization
     var vowelCount = 0
     var consonantCount = 0
-// definition of character groups
+
+    // Definition of character groups
     val vowels = "aeiouy"
-    val consonants = "bcdfghjklmnpqrstvwxz"
-// main loop
+    val consonants = "bcdfghjklmnpqrstvwxyz"
+
+    // Main loop
     for (c in s) {
-        if (vowels.contains(c)) {
-            vowelCount++
-        } else if (consonants.contains(c)) {
-            consonantCount++
+        when {
+            c in vowels -> vowelCount++
+            c in consonants -> consonantCount++
         }
     }
 
+    // Calculate the number of other characters
+    val otherCount = s.length - (vowelCount + consonantCount)
+
     println("Vowels: $vowelCount")
     println("Consonants: $consonantCount")
-    println("Other characters: ${s.length - (vowelCount + consonantCount)}")
+    println("Other characters: $otherCount")
 }
